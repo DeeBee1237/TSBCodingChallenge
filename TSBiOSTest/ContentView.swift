@@ -10,37 +10,13 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var username: String = ""
-    @State private var email: String = ""
-    @State private var phoneNumber: String = ""
-    @State private var username: String = ""
-    @State private var username: String = ""
 
     
     var body: some View {
         
         VStack {
             
-            TextField(
-                   "Full Name",
-                   text: $username
-            )
-            .border(.black)
-            .cornerRadius(2)
-            
-            TextField(
-                   "Full Name",
-                   text: $email
-            )
-            
-            TextField(
-                   "Full Name",
-                   text: $username
-            )
-            
-            TextField(
-                   "Full Name",
-                   text: $username
-            )
+            inputField("Full Name", $username)
             
         }
         .padding()
@@ -49,12 +25,14 @@ struct ContentView: View {
     
     
     
-    @ViewBuilder func inputField(inputBinding: Binding<String>) -> some View {
+    @ViewBuilder func inputField(_ title: String, _ inputBinding: Binding<String>) -> some View {
         
         TextField(
-               "Full Name",
-               text: input
+               title,
+               text: inputBinding
         )
+        .border(.secondary)
+        .cornerRadius(4.0)
     }
     
 }

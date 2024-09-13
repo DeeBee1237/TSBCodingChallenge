@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ The standard text field we will use throughout the app, the style will be global
+ */
 struct TextFieldView: View {
     
     var title: String

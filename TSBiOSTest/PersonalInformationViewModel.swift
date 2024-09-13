@@ -38,7 +38,7 @@ class PersonalInformationViewModel {
         
         guard validatePhoneNumber(phone: phone) else { return "Error please enter a valid phone number"; }
         
-        guard validateGender(gender: gender) else { return "Error please select a valid gender"; }
+        guard validateGender(gender: gender) else { return "Error please select a valid gender (Select any value from the picker)"; }
             
         return nil
     }

@@ -12,13 +12,13 @@ struct PersonalInformationView: View {
     @State private var username: String = ""
     @State private var emailAddress: String = ""
     @State private var phoneNumber: String = ""
-    @State private var gender: String = ""
+    @State private var selectedGender: Gender = .Male
+    @State private var gender: String = "Male"
     @State private var address: String = ""
     
     @State private var errorText: String?
     @State private var dataIsValid: Bool = false
     
-    @State private var selectedGender: Gender = .Male
     var vm : PersonalInformationViewModel = PersonalInformationViewModel()
     
     var body: some View {
@@ -72,7 +72,7 @@ struct PersonalInformationView: View {
             .padding()
             .navigationTitle("Personal Information")
             .navigationDestination(isPresented: $dataIsValid) {
-                FinancialInformation()
+                FinancialInformationView()
             }
         }
     }

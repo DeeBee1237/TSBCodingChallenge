@@ -76,8 +76,8 @@ struct PersonalInformationView: View {
                     
                     Spacer()
         
-                    Button {                        
-                        self.errorText = self.vm.validateFields(email: self.emailAddress, phone: self.phoneNumber)
+                    Button {
+                        self.errorText = self.vm.validateFields(name: self.username, email: self.emailAddress, phone: self.phoneNumber)
                         dataIsValid = self.errorText == nil
                         
                     } label: {

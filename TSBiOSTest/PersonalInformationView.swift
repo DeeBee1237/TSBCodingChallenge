@@ -7,13 +7,16 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct PersonalInformationView: View {
     
     @State private var username: String = ""
     @State private var emailAddress: String = ""
     @State private var phoneNumber: String = ""
     @State private var gender: String = ""
     @State private var address: String = ""
+    
+    @State private var errorText: String?
+    @State private var dataIsValid: Bool = false
     
     // TODO: move to VM
     enum Gender: String, CaseIterable, Identifiable {
@@ -22,6 +25,7 @@ struct ContentView: View {
     }
 
     @State private var selectedGender: Gender = .Male
+    var vm : PersonalInformationViewModel = PersonalInformationViewModel()
     
     var body: some View {
         
@@ -31,17 +35,25 @@ struct ContentView: View {
                    
                 List {
                     
-                    TextFieldView(title: "Full Name", inputBinding: $username)
-                    TextFieldView(title: "Email Address", inputBinding: $emailAddress)
-                    TextFieldView(title: "Phone Number", inputBinding: $phoneNumber)
-                    TextFieldView(title: "Address (Optional)", inputBinding: $address)
+                    Group {
+                        TextFieldView(title: "Full Name", inputBinding: $username)
+                        TextFieldView(title: "Email Address", inputBinding: $emailAddress)
+                        TextFieldView(title: "Phone Number", inputBinding: $phoneNumber)
+                        TextFieldView(title: "Address (Optional)", inputBinding: $address)
                         
-                    
-                    Picker(selectedGender.rawValue, selection: $selectedGender) {
-                        Text("Male").tag(Gender.Male)
-                        Text("Female").tag(Gender.Female)
-                    }
+                        
+                        Picker(selectedGender.rawValue, selection: $selectedGender) {
+                            Text("Male").tag(Gender.Male)
+                            Text("Female").tag(Gender.Female)
+                        }
+                    }.padding()
                 }
+                .padding()
+                
+                if let errorText {
+                    Text(errorText)
+                }
+                    
 //                HStack {
 //                    
 //                    TextFieldView(title: selectedGender.rawValue, inputBinding: $gender)
@@ -63,17 +75,23 @@ struct ContentView: View {
                 HStack {
                     
                     Spacer()
-                    
-                    NavigationLink("Next") {
-                        FinancialInformation()
+        
+                    Button {                        
+                        self.errorText = self.vm.validateFields(email: self.emailAddress, phone: self.phoneNumber)
+                        dataIsValid = self.errorText == nil
+                        
+                    } label: {
+                        Text("Next")
                     }
-                
                 }
                 .padding(.top, 140)
                 
             }
             .padding()
             .navigationTitle("Personal Information")
+            .navigationDestination(isPresented: $dataIsValid) {
+                FinancialInformation()
+            }
         }
     }
     
@@ -81,5 +99,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    PersonalInformationView()
 }

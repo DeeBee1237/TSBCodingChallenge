@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		7CD3E1112C93B690005D40AD /* TSBiOSTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E1102C93B690005D40AD /* TSBiOSTestApp.swift */; };
-		7CD3E1132C93B690005D40AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E1122C93B690005D40AD /* ContentView.swift */; };
+		7CD3E1132C93B690005D40AD /* PersonalInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E1122C93B690005D40AD /* PersonalInformationView.swift */; };
 		7CD3E1152C93B692005D40AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD3E1142C93B692005D40AD /* Assets.xcassets */; };
 		7CD3E1182C93B692005D40AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD3E1172C93B692005D40AD /* Preview Assets.xcassets */; };
 		7CD3E1222C93B693005D40AD /* TSBiOSTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E1212C93B693005D40AD /* TSBiOSTestTests.swift */; };
 		7CD3E12C2C93B693005D40AD /* TSBiOSTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E12B2C93B693005D40AD /* TSBiOSTestUITests.swift */; };
 		7CD3E12E2C93B693005D40AD /* TSBiOSTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E12D2C93B693005D40AD /* TSBiOSTestUITestsLaunchTests.swift */; };
-		7CD3E13B2C93CA9B005D40AD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E13A2C93CA9B005D40AD /* ViewModel.swift */; };
-		7CD3E13C2C93CA9B005D40AD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E13A2C93CA9B005D40AD /* ViewModel.swift */; };
-		7CD3E13D2C93CA9B005D40AD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E13A2C93CA9B005D40AD /* ViewModel.swift */; };
+		7CD3E13B2C93CA9B005D40AD /* PersonalInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E13A2C93CA9B005D40AD /* PersonalInformationViewModel.swift */; };
+		7CD3E13C2C93CA9B005D40AD /* PersonalInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E13A2C93CA9B005D40AD /* PersonalInformationViewModel.swift */; };
+		7CD3E13D2C93CA9B005D40AD /* PersonalInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E13A2C93CA9B005D40AD /* PersonalInformationViewModel.swift */; };
 		7CD3E1472C93EFD6005D40AD /* FinancialInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E1462C93EFD6005D40AD /* FinancialInformation.swift */; };
 		7CD3E1482C93EFD6005D40AD /* FinancialInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E1462C93EFD6005D40AD /* FinancialInformation.swift */; };
 		7CD3E1492C93EFD6005D40AD /* FinancialInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E1462C93EFD6005D40AD /* FinancialInformation.swift */; };
@@ -48,7 +48,7 @@
 /* Begin PBXFileReference section */
 		7CD3E10D2C93B690005D40AD /* TSBiOSTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSBiOSTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD3E1102C93B690005D40AD /* TSBiOSTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSBiOSTestApp.swift; sourceTree = "<group>"; };
-		7CD3E1122C93B690005D40AD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7CD3E1122C93B690005D40AD /* PersonalInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationView.swift; sourceTree = "<group>"; };
 		7CD3E1142C93B692005D40AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CD3E1172C93B692005D40AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7CD3E11D2C93B693005D40AD /* TSBiOSTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TSBiOSTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,7 +56,7 @@
 		7CD3E1272C93B693005D40AD /* TSBiOSTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TSBiOSTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD3E12B2C93B693005D40AD /* TSBiOSTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSBiOSTestUITests.swift; sourceTree = "<group>"; };
 		7CD3E12D2C93B693005D40AD /* TSBiOSTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSBiOSTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7CD3E13A2C93CA9B005D40AD /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		7CD3E13A2C93CA9B005D40AD /* PersonalInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationViewModel.swift; sourceTree = "<group>"; };
 		7CD3E1462C93EFD6005D40AD /* FinancialInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInformation.swift; sourceTree = "<group>"; };
 		7CD3E14A2C93F18C005D40AD /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		7CD3E14E2C93F349005D40AD /* ReviewAndSubmitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewAndSubmitView.swift; sourceTree = "<group>"; };
@@ -111,10 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				7CD3E1102C93B690005D40AD /* TSBiOSTestApp.swift */,
-				7CD3E1122C93B690005D40AD /* ContentView.swift */,
+				7CD3E1122C93B690005D40AD /* PersonalInformationView.swift */,
 				7CD3E1142C93B692005D40AD /* Assets.xcassets */,
 				7CD3E1162C93B692005D40AD /* Preview Content */,
-				7CD3E13A2C93CA9B005D40AD /* ViewModel.swift */,
+				7CD3E13A2C93CA9B005D40AD /* PersonalInformationViewModel.swift */,
 				7CD3E1462C93EFD6005D40AD /* FinancialInformation.swift */,
 				7CD3E14A2C93F18C005D40AD /* TextFieldView.swift */,
 				7CD3E14E2C93F349005D40AD /* ReviewAndSubmitView.swift */,
@@ -277,8 +277,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CD3E1132C93B690005D40AD /* ContentView.swift in Sources */,
-				7CD3E13B2C93CA9B005D40AD /* ViewModel.swift in Sources */,
+				7CD3E1132C93B690005D40AD /* PersonalInformationView.swift in Sources */,
+				7CD3E13B2C93CA9B005D40AD /* PersonalInformationViewModel.swift in Sources */,
 				7CD3E14B2C93F18C005D40AD /* TextFieldView.swift in Sources */,
 				7CD3E1112C93B690005D40AD /* TSBiOSTestApp.swift in Sources */,
 				7CD3E14F2C93F349005D40AD /* ReviewAndSubmitView.swift in Sources */,
@@ -293,7 +293,7 @@
 				7CD3E1502C93F349005D40AD /* ReviewAndSubmitView.swift in Sources */,
 				7CD3E1482C93EFD6005D40AD /* FinancialInformation.swift in Sources */,
 				7CD3E14C2C93F18D005D40AD /* TextFieldView.swift in Sources */,
-				7CD3E13C2C93CA9B005D40AD /* ViewModel.swift in Sources */,
+				7CD3E13C2C93CA9B005D40AD /* PersonalInformationViewModel.swift in Sources */,
 				7CD3E1222C93B693005D40AD /* TSBiOSTestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,7 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CD3E12E2C93B693005D40AD /* TSBiOSTestUITestsLaunchTests.swift in Sources */,
-				7CD3E13D2C93CA9B005D40AD /* ViewModel.swift in Sources */,
+				7CD3E13D2C93CA9B005D40AD /* PersonalInformationViewModel.swift in Sources */,
 				7CD3E14D2C93F18D005D40AD /* TextFieldView.swift in Sources */,
 				7CD3E12C2C93B693005D40AD /* TSBiOSTestUITests.swift in Sources */,
 				7CD3E1512C93F349005D40AD /* ReviewAndSubmitView.swift in Sources */,

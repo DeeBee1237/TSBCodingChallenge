@@ -11,7 +11,7 @@ import SwiftUI
 struct TSBiOSTestApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PersonalInformationView()
         }
     }
 }

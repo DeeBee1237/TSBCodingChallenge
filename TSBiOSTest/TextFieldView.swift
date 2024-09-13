@@ -17,8 +17,11 @@ struct TextFieldView: View {
                title,
                text: inputBinding
         )
-//        .border(.secondary)
-//        .cornerRadius(16.0)
-        .padding(.top, 16)
+        .padding(4)
+        .overlay(
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(.gray, lineWidth: 2)
+        )
+        
     }
 }

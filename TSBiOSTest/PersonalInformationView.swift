@@ -18,12 +18,6 @@ struct PersonalInformationView: View {
     @State private var errorText: String?
     @State private var dataIsValid: Bool = false
     
-    // TODO: move to VM
-    enum Gender: String, CaseIterable, Identifiable {
-        case Male, Female
-        var id: Self { self }
-    }
-
     @State private var selectedGender: Gender = .Male
     var vm : PersonalInformationViewModel = PersonalInformationViewModel()
     
@@ -33,51 +27,39 @@ struct PersonalInformationView: View {
             
             VStack {
                    
-                List {
+                    TextFieldView(title: "Full Name", inputBinding: $username)
+                    TextFieldView(title: "Email Address", inputBinding: $emailAddress)
+                    TextFieldView(title: "Phone Number", inputBinding: $phoneNumber)
+                    TextFieldView(title: "Address (Optional)", inputBinding: $address)
                     
-                    Group {
-                        TextFieldView(title: "Full Name", inputBinding: $username)
-                        TextFieldView(title: "Email Address", inputBinding: $emailAddress)
-                        TextFieldView(title: "Phone Number", inputBinding: $phoneNumber)
-                        TextFieldView(title: "Address (Optional)", inputBinding: $address)
-                        
-                        
-                        Picker(selectedGender.rawValue, selection: $selectedGender) {
-                            Text("Male").tag(Gender.Male)
-                            Text("Female").tag(Gender.Female)
-                        }
-                    }.padding()
-                }
-                .padding()
+                    
+                VStack {
+                    
+                    TextFieldView(title: "Gender", inputBinding: $gender)
+                    
+                    Picker(selectedGender.rawValue, selection: $selectedGender) {
+                        Text("Male").tag(Gender.Male)
+                        Text("Female").tag(Gender.Female)
+                    }
+                    .pickerStyle(.segmented)
+                    .onChange(of: selectedGender) { _, gender in
+                        self.gender = gender.rawValue
+                    }
+                }.padding(.top, 25)
+                
                 
                 if let errorText {
                     Text(errorText)
+                        .foregroundStyle(.red)
+                        .padding(.top, 30)
                 }
-                    
-//                HStack {
-//                    
-//                    TextFieldView(title: selectedGender.rawValue, inputBinding: $gender)
-//
-//                    
-//                }
-                
-//                List {
-//                }
-//                .frame(height: 100)
-//                List {
-//                    Picker(self.gender, selection: $gender) {
-//                        Text("Male")
-//                        Text("Female")
-//                    }
-//                }
-
                 
                 HStack {
                     
                     Spacer()
         
                     Button {
-                        self.errorText = self.vm.validateFields(name: self.username, email: self.emailAddress, phone: self.phoneNumber)
+                        self.errorText = self.vm.validateFields(name: self.username, email: self.emailAddress, phone: self.phoneNumber, gender: self.gender)
                         dataIsValid = self.errorText == nil
                         
                     } label: {

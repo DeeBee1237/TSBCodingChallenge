@@ -26,13 +26,19 @@ class PersonalInformationViewModel {
         return phoneTest.evaluate(with: phone)
     }
     
-    func validateFields(name: String, email: String, phone: String) -> String? {
+    func validateGender(gender: String) -> Bool {
+        return Gender.allCases.first(where: {$0.rawValue == gender}) != nil;
+    }
+    
+    func validateFields(name: String, email: String, phone: String, gender: String) -> String? {
         
         guard validateName(name: name) else { return "Error name cannot be empty"; }
 
         guard validateEmail(email: email) else { return "Error please enter a valid email"; }
         
         guard validatePhoneNumber(phone: phone) else { return "Error please enter a valid phone number"; }
+        
+        guard validateGender(gender: gender) else { return "Error please select a valid gender"; }
             
         return nil
     }

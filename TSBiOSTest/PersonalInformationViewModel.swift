@@ -6,9 +6,26 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 class PersonalInformationViewModel {
+    
+//    var loanApplicationRecord: LoanApplicationRecord? = nil
+    
+//    @Binding private var username: String
+//    @Binding private var emailAddress: String
+//    @Binding private var phoneNumber: String
+//    @Binding private var gender: String
+//    @Binding private var address: String
+//    
+//    init(username: Binding<String>, emailAddress: Binding<String>, phoneNumber: Binding<String>, gender: Binding<String>, address: Binding<String>) {
+//        self._username = username
+//        self._emailAddress = emailAddress
+//        self._phoneNumber = phoneNumber
+//        self._gender = gender
+//        self._address = address
+//        
+//    }
     
     func validateName(name: String) -> Bool {
         return name.isEmpty == false
@@ -41,6 +58,33 @@ class PersonalInformationViewModel {
         guard validateGender(gender: gender) else { return "Error please select a valid gender (Select any value from the picker)"; }
             
         return nil
+    }
+    
+    func saveCurrentData(name: String, email: String, phone: String, gender: String, address: String) {
+     
+        let loanApplicationRecord = LoanApplicationRecord(fullName: name, emailAddress: email, phoneNumber: phone, address: address, gender: gender, anualIncome: nil, desiredLoanAmount: nil, irdNumber: nil)
+        
+        if let contentData = try? JSONEncoder().encode(loanApplicationRecord) {
+            UserDefaults.standard.set(contentData, forKey: DataStorageManager.currentApplicationKey)
+        } else {
+            print("Error saving data in the Personal Information View Model")
+        }
+        
+    }
+    
+    func getSavedDataForThisScreen(username: State<String>, emailAddress: State<String>, phoneNumber: State<String>, gender: State<String>, address: State<String>) {
+        
+        if let data = UserDefaults.standard.object(forKey: DataStorageManager.currentApplicationKey) as? Data,
+           let currentApplication = try? JSONDecoder().decode(LoanApplicationRecord.self, from: data) {
+            
+            username.wrappedValue = currentApplication.fullName ?? ""
+            emailAddress.wrappedValue = currentApplication.emailAddress ?? ""
+            phoneNumber.wrappedValue = currentApplication.phoneNumber ?? ""
+            gender.wrappedValue = currentApplication.gender ?? ""
+            address.wrappedValue = currentApplication.address ?? ""
+
+        }
+
     }
     
 }

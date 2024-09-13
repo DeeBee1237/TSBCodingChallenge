@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ReviewAndSubmitView: View {
     var body: some View {
-        Text("TODO: ReviewAndSubmitView")
+        NavigationStack {
+            Text("TODO: ReviewAndSubmitView")
+        }
+        .padding()
+        .navigationTitle("Review And Submit")
     }
 }
 

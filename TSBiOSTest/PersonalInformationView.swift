@@ -21,6 +21,10 @@ struct PersonalInformationView: View {
     
     var vm : PersonalInformationViewModel = PersonalInformationViewModel()
     
+//    init() {
+//        self.vm = PersonalInformationViewModel(username: $username, emailAddress: $emailAddress, phoneNumber: $phoneNumber, gender: $gender, address: $address)
+//    }
+    
     var body: some View {
         
         NavigationStack {
@@ -60,6 +64,11 @@ struct PersonalInformationView: View {
         
                     Button {
                         self.errorText = self.vm.validateFields(name: self.username, email: self.emailAddress, phone: self.phoneNumber, gender: self.gender)
+                        
+                        if self.errorText == nil {
+                            self.vm.saveCurrentData(name: self.username, email: self.emailAddress, phone: self.phoneNumber, gender: self.gender, address: self.address)
+                        }
+                        
                         dataIsValid = self.errorText == nil
                         
                     } label: {
@@ -68,6 +77,9 @@ struct PersonalInformationView: View {
                 }
                 .padding(.top, 140)
                 
+            }
+            .onAppear {
+                self.vm.getSavedDataForThisScreen(username: _username, emailAddress: _emailAddress, phoneNumber: _phoneNumber, gender: _gender, address: _address)
             }
             .padding()
             .navigationTitle("Personal Information")

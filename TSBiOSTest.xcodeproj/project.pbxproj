@@ -11,6 +11,12 @@
 		7C97D4DF2C9423C500534E75 /* FinancialInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97D4DE2C9423C500534E75 /* FinancialInformationViewModel.swift */; };
 		7C97D4E02C9423C500534E75 /* FinancialInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97D4DE2C9423C500534E75 /* FinancialInformationViewModel.swift */; };
 		7C97D4E12C9423C500534E75 /* FinancialInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97D4DE2C9423C500534E75 /* FinancialInformationViewModel.swift */; };
+		7C97D4E32C942D9200534E75 /* LoanApplicationRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97D4E22C942D9200534E75 /* LoanApplicationRecord.swift */; };
+		7C97D4E42C942D9200534E75 /* LoanApplicationRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97D4E22C942D9200534E75 /* LoanApplicationRecord.swift */; };
+		7C97D4E52C942D9200534E75 /* LoanApplicationRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97D4E22C942D9200534E75 /* LoanApplicationRecord.swift */; };
+		7C97D4E72C942E6B00534E75 /* DataStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97D4E62C942E6B00534E75 /* DataStorageManager.swift */; };
+		7C97D4E82C942E6B00534E75 /* DataStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97D4E62C942E6B00534E75 /* DataStorageManager.swift */; };
+		7C97D4E92C942E6B00534E75 /* DataStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C97D4E62C942E6B00534E75 /* DataStorageManager.swift */; };
 		7CD3E1112C93B690005D40AD /* TSBiOSTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E1102C93B690005D40AD /* TSBiOSTestApp.swift */; };
 		7CD3E1132C93B690005D40AD /* PersonalInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD3E1122C93B690005D40AD /* PersonalInformationView.swift */; };
 		7CD3E1152C93B692005D40AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD3E1142C93B692005D40AD /* Assets.xcassets */; };
@@ -52,6 +58,8 @@
 /* Begin PBXFileReference section */
 		7C97D4DC2C941F9C00534E75 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		7C97D4DE2C9423C500534E75 /* FinancialInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInformationViewModel.swift; sourceTree = "<group>"; };
+		7C97D4E22C942D9200534E75 /* LoanApplicationRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanApplicationRecord.swift; sourceTree = "<group>"; };
+		7C97D4E62C942E6B00534E75 /* DataStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageManager.swift; sourceTree = "<group>"; };
 		7CD3E10D2C93B690005D40AD /* TSBiOSTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSBiOSTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD3E1102C93B690005D40AD /* TSBiOSTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSBiOSTestApp.swift; sourceTree = "<group>"; };
 		7CD3E1122C93B690005D40AD /* PersonalInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformationView.swift; sourceTree = "<group>"; };
@@ -126,6 +134,8 @@
 				7CD3E14E2C93F349005D40AD /* ReviewAndSubmitView.swift */,
 				7C97D4DC2C941F9C00534E75 /* Gender.swift */,
 				7C97D4DE2C9423C500534E75 /* FinancialInformationViewModel.swift */,
+				7C97D4E22C942D9200534E75 /* LoanApplicationRecord.swift */,
+				7C97D4E62C942E6B00534E75 /* DataStorageManager.swift */,
 			);
 			path = TSBiOSTest;
 			sourceTree = "<group>";
@@ -286,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CD3E1132C93B690005D40AD /* PersonalInformationView.swift in Sources */,
+				7C97D4E72C942E6B00534E75 /* DataStorageManager.swift in Sources */,
 				7CD3E13B2C93CA9B005D40AD /* PersonalInformationViewModel.swift in Sources */,
 				7CD3E14B2C93F18C005D40AD /* TextFieldView.swift in Sources */,
 				7CD3E1112C93B690005D40AD /* TSBiOSTestApp.swift in Sources */,
@@ -293,6 +304,7 @@
 				7C97D4DF2C9423C500534E75 /* FinancialInformationViewModel.swift in Sources */,
 				7CD3E1472C93EFD6005D40AD /* FinancialInformationView.swift in Sources */,
 				7C97D4DD2C941F9C00534E75 /* Gender.swift in Sources */,
+				7C97D4E32C942D9200534E75 /* LoanApplicationRecord.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +317,9 @@
 				7CD3E14C2C93F18D005D40AD /* TextFieldView.swift in Sources */,
 				7C97D4E02C9423C500534E75 /* FinancialInformationViewModel.swift in Sources */,
 				7CD3E13C2C93CA9B005D40AD /* PersonalInformationViewModel.swift in Sources */,
+				7C97D4E82C942E6B00534E75 /* DataStorageManager.swift in Sources */,
 				7CD3E1222C93B693005D40AD /* TSBiOSTestTests.swift in Sources */,
+				7C97D4E42C942D9200534E75 /* LoanApplicationRecord.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +330,8 @@
 				7CD3E12E2C93B693005D40AD /* TSBiOSTestUITestsLaunchTests.swift in Sources */,
 				7CD3E13D2C93CA9B005D40AD /* PersonalInformationViewModel.swift in Sources */,
 				7CD3E14D2C93F18D005D40AD /* TextFieldView.swift in Sources */,
+				7C97D4E52C942D9200534E75 /* LoanApplicationRecord.swift in Sources */,
+				7C97D4E92C942E6B00534E75 /* DataStorageManager.swift in Sources */,
 				7CD3E12C2C93B693005D40AD /* TSBiOSTestUITests.swift in Sources */,
 				7CD3E1512C93F349005D40AD /* ReviewAndSubmitView.swift in Sources */,
 				7C97D4E12C9423C500534E75 /* FinancialInformationViewModel.swift in Sources */,

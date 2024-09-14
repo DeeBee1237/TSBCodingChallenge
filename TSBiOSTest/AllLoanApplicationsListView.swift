@@ -29,6 +29,14 @@ struct AllLoanApplicationsListView: View {
             Text("New Application")
         })
         
+        
+        Button(action : {
+            self.vm.removeCurrentlySavedApplication()
+            self.mode.wrappedValue.dismiss()
+        }){
+            Text("New Application")
+        }
+        
     }
     
     

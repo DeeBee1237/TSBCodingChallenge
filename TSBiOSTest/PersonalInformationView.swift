@@ -21,10 +21,6 @@ struct PersonalInformationView: View {
     
     var vm : PersonalInformationViewModel = PersonalInformationViewModel()
     
-//    init() {
-//        self.vm = PersonalInformationViewModel(username: $username, emailAddress: $emailAddress, phoneNumber: $phoneNumber, gender: $gender, address: $address)
-//    }
-    
     var body: some View {
         
         NavigationStack {

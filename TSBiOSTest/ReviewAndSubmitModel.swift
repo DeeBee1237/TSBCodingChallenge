@@ -32,7 +32,6 @@ class ReviewAndSubmitModel {
     }
     
     func getAddress() -> String? {
-        
         guard let address = getSavedDataForThisScreen()?.address else { return nil }
         return address.isEmpty ? nil : address
     }
@@ -51,6 +50,12 @@ class ReviewAndSubmitModel {
     
     func getIRDNumber() -> String {
         return getSavedDataForThisScreen()?.irdNumber ?? ""
+    }
+    
+    func submitData() -> Bool {
+        // TODO: implement a call back (make it escaping if it ever becomes an async opperation) and provide
+        // TODO: user feedback ?
+        return DataStorageManager.saveNewLoanApplicationToList()
     }
     
 }

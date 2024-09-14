@@ -10,7 +10,7 @@ import SwiftUI
 struct ReviewAndSubmitView: View {
     
     let vm: ReviewAndSubmitModel = ReviewAndSubmitModel()
-    @State private var dataIsValid: Bool = false
+    @State private var theDataIsValid: Bool = false
 
     
     var body: some View {
@@ -49,7 +49,7 @@ struct ReviewAndSubmitView: View {
                     Spacer()
                     
                     Button {
-                        dataIsValid = self.vm.submitData()
+                        theDataIsValid = self.vm.submitData()
                     } label: {
                         Text("Submit")
                     }
@@ -58,7 +58,7 @@ struct ReviewAndSubmitView: View {
                 
             }
             .navigationTitle("Review And Submit")
-            .navigationDestination(isPresented: $dataIsValid) {
+            .navigationDestination(isPresented: $theDataIsValid) {
                 AllLoanApplicationsListView()
             }
             

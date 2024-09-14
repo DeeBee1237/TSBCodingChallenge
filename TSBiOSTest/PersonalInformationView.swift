@@ -80,6 +80,9 @@ struct PersonalInformationView: View {
             }
             .onAppear {
                 self.vm.getSavedDataForThisScreen(username: _username, emailAddress: _emailAddress, phoneNumber: _phoneNumber, gender: _gender, address: _address)
+                // TODO: this needs to be fixed with a get set approach or someother way to avoid
+                // setting both individually
+                self.selectedGender = Gender(rawValue: self.gender) ?? .Male
             }
             .padding()
             .navigationTitle("Personal Information")

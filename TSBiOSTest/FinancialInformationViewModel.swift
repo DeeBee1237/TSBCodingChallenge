@@ -69,7 +69,6 @@ class FinancialInformationViewModel {
                 UserDefaults.standard.removeObject(forKey: DataStorageManager.currentApplicationKey)
             
                 UserDefaults.standard.set(contentData, forKey: DataStorageManager.currentApplicationKey)
-                print("Done")
             } else {
                 print("Error saving data in the Personal Information View Model")
             }

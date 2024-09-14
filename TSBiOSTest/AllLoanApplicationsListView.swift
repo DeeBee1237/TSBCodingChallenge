@@ -24,13 +24,20 @@ struct AllLoanApplicationsListView: View {
     
     @ViewBuilder func getLoanApplicationView(loanApplication: LoanApplicationRecord) -> some View {
         
-        VStack {
+        if let fullName = loanApplication.fullName, let desiredAmount = loanApplication.desiredLoanAmount {
             
-            Text("Name : \(loanApplication.fullName)")
-            Text("Desired Loan Amount : \(loanApplication.desiredLoanAmount)")
-            Text("Date Submitted : \(loanApplication.getFormattedDateSubmitted())")
+            VStack {
+                
+                Text("Name : \(fullName)")
+                Text("Desired Loan Amount : \(desiredAmount)")
+                Text("Date Submitted : \(loanApplication.getFormattedDateSubmitted())")
 
+            }
+            
+        } else {
+           EmptyView()
         }
+        
     }
     
 }

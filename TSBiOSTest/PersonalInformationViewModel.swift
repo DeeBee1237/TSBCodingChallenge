@@ -10,23 +10,6 @@ import SwiftUI
 
 class PersonalInformationViewModel {
     
-//    var loanApplicationRecord: LoanApplicationRecord? = nil
-    
-//    @Binding private var username: String
-//    @Binding private var emailAddress: String
-//    @Binding private var phoneNumber: String
-//    @Binding private var gender: String
-//    @Binding private var address: String
-//    
-//    init(username: Binding<String>, emailAddress: Binding<String>, phoneNumber: Binding<String>, gender: Binding<String>, address: Binding<String>) {
-//        self._username = username
-//        self._emailAddress = emailAddress
-//        self._phoneNumber = phoneNumber
-//        self._gender = gender
-//        self._address = address
-//        
-//    }
-    
     func validateName(name: String) -> Bool {
         return name.isEmpty == false
     }
@@ -95,6 +78,7 @@ class PersonalInformationViewModel {
             username.wrappedValue = ""
             emailAddress.wrappedValue = ""
             phoneNumber.wrappedValue = ""
+            gender.wrappedValue = "Male"
             address.wrappedValue = ""
         }
         

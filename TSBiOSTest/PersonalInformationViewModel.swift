@@ -91,7 +91,14 @@ class PersonalInformationViewModel {
             gender.wrappedValue = currentApplication.gender ?? ""
             address.wrappedValue = currentApplication.address ?? ""
 
+        } else { // TODO: this is not right ... need to revist this logic (part of reset form logic)
+            username.wrappedValue = ""
+            emailAddress.wrappedValue = ""
+            phoneNumber.wrappedValue = ""
+            address.wrappedValue = ""
         }
+        
+        
 
     }
     

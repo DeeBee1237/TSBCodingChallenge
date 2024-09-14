@@ -13,4 +13,7 @@ class AllLoanApplicationsListViewModel {
         return DataStorageManager.getCurrentlySavedApplications()
     }
     
+    func removeCurrentlySavedApplication()  {
+        return DataStorageManager.removeCurrentlySavedApplication()
+    }
 }

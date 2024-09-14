@@ -27,6 +27,10 @@ class DataStorageManager {
         return nil
     }
     
+    static func removeCurrentlySavedApplication() {
+        UserDefaults.standard.removeObject(forKey: DataStorageManager.currentApplicationKey)
+    }
+    
     static func getCurrentlySavedApplications() -> [LoanApplicationRecord] {
         
         if let data = UserDefaults.standard.object(forKey: DataStorageManager.allApplicationsKey) as? Data,

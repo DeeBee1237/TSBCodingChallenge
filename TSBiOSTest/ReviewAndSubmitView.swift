@@ -12,6 +12,8 @@ struct ReviewAndSubmitView: View {
     let vm: ReviewAndSubmitModel = ReviewAndSubmitModel()
     @State private var theDataIsValid: Bool = false
 
+    @State private var showSuccess = false
+    
     
     var body: some View {
         
@@ -42,17 +44,28 @@ struct ReviewAndSubmitView: View {
                     
                     Text("IRD Number : \(self.vm.getIRDNumber())")
                     
+                    
+                    if showSuccess {
+                        Text("Your Application Was Successfully Submitted!")
+                            .foregroundStyle(.green)
+                            .padding(.top, 30)
+                    }
+                    
                 }
                 
                 HStack {
                     
                     Spacer()
-                    
+                                    
                     Button {
-                        theDataIsValid = self.vm.submitData()
+                        
+                        showSuccess = self.vm.submitData()
+                        delayTransition()
+                        
                     } label: {
                         Text("Submit")
                     }
+                    
                 }
                 .padding(.top, 140)
                 
@@ -64,6 +77,12 @@ struct ReviewAndSubmitView: View {
             
         }
         .padding()
+    }
+    
+    private func delayTransition() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            theDataIsValid = true
+        }
     }
     
 }

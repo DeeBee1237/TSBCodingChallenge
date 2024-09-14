@@ -32,5 +32,5 @@ struct LoanApplicationRecord: Codable {
 extension LoanApplicationRecord: Identifiable {
   // IRD Number is required to submit the form so we can assume its safe
   // But, TODO: I still dont like this
-  var id: String { irdNumber ?? "" }
+    var id: String {  UUID().uuidString }
 }

@@ -42,6 +42,10 @@ struct FinancialInformationView: View {
                         
                         self.errorText = self.vm.validateFields(anualIncome: self.anualIncome, desiredLoanAmount: self.desiredLoanAmount, irdNumber: self.irdNumber)
                         
+                        if self.errorText == nil {
+                            self.vm.saveCurrentData(irdNumber: self.irdNumber, desiredLoanAmount: self.desiredLoanAmount, anualIncome: self.anualIncome)
+                        }
+                        
                         dataIsValid = self.errorText == nil
                         
                     } label: {
@@ -55,6 +59,9 @@ struct FinancialInformationView: View {
             .navigationTitle("Financial Information")
             .navigationDestination(isPresented: $dataIsValid) {
                 ReviewAndSubmitView()
+            }
+            .onAppear {
+                self.vm.getSavedDataForThisScreen(irdNumber: self._irdNumber, desiredLoanAmount: self._desiredLoanAmount, anualIncome: self._anualIncome)
             }
         }
         

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class FinancialInformationViewModel {
     
@@ -51,6 +52,41 @@ class FinancialInformationViewModel {
         }
         
         return nil;
+    }
+    
+    
+    func saveCurrentData(irdNumber: String, desiredLoanAmount: String, anualIncome: String) {
+     
+        if let data = UserDefaults.standard.object(forKey: DataStorageManager.currentApplicationKey) as? Data,
+           var currentApplication = try? JSONDecoder().decode(LoanApplicationRecord.self, from: data) {
+            
+            currentApplication.irdNumber = irdNumber
+            currentApplication.desiredLoanAmount = desiredLoanAmount
+            currentApplication.anualIncome = anualIncome
+
+            if let contentData = try? JSONEncoder().encode(currentApplication) {
+                
+                UserDefaults.standard.removeObject(forKey: DataStorageManager.currentApplicationKey)
+            
+                UserDefaults.standard.set(contentData, forKey: DataStorageManager.currentApplicationKey)
+                print("Done")
+            } else {
+                print("Error saving data in the Personal Information View Model")
+            }
+        }
+        
+    }
+    
+    func getSavedDataForThisScreen(irdNumber: State<String>, desiredLoanAmount: State<String>, anualIncome: State<String>) {
+        
+        if let data = UserDefaults.standard.object(forKey: DataStorageManager.currentApplicationKey) as? Data,
+           let currentApplication = try? JSONDecoder().decode(LoanApplicationRecord.self, from: data) {
+            
+            irdNumber.wrappedValue = currentApplication.irdNumber ?? ""
+            desiredLoanAmount.wrappedValue = currentApplication.desiredLoanAmount ?? ""
+            anualIncome.wrappedValue = currentApplication.anualIncome ?? ""
+        }
+
     }
     
 }

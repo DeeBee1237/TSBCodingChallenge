@@ -14,8 +14,8 @@ struct LoanApplicationRecord: Codable {
     let phoneNumber: String?
     let address: String?
     let gender: String?
-    let anualIncome: String?
-    let desiredLoanAmount: String?
-    let irdNumber: String?
+    var anualIncome: String?
+    var desiredLoanAmount: String?
+    var irdNumber: String?
     
 }

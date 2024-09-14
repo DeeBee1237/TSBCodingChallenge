@@ -62,7 +62,15 @@ class PersonalInformationViewModel {
     
     func saveCurrentData(name: String, email: String, phone: String, gender: String, address: String) {
      
-        let loanApplicationRecord = LoanApplicationRecord(fullName: name, emailAddress: email, phoneNumber: phone, address: address, gender: gender, anualIncome: nil, desiredLoanAmount: nil, irdNumber: nil)
+        var loanApplicationRecord = LoanApplicationRecord(fullName: name, emailAddress: email, phoneNumber: phone, address: address, gender: gender, anualIncome: nil, desiredLoanAmount: nil, irdNumber: nil)
+        
+        if let data = UserDefaults.standard.object(forKey: DataStorageManager.currentApplicationKey) as? Data,
+           let currentApplication = try? JSONDecoder().decode(LoanApplicationRecord.self, from: data) {
+            
+            loanApplicationRecord.irdNumber = currentApplication.irdNumber ?? ""
+            loanApplicationRecord.desiredLoanAmount = currentApplication.desiredLoanAmount ?? ""
+            loanApplicationRecord.anualIncome = currentApplication.anualIncome ?? ""
+        }
         
         if let contentData = try? JSONEncoder().encode(loanApplicationRecord) {
             UserDefaults.standard.set(contentData, forKey: DataStorageManager.currentApplicationKey)

@@ -28,7 +28,7 @@ class FinancialInformationViewModel {
     func validateDesiredLoanAmount(desiredLoanAmount: String, anualIncome: String) -> Bool {
         
         if let loan = Int(desiredLoanAmount), let anualIncome = Int(anualIncome) {
-            return Double(loan/anualIncome) <= 0.5
+            return Double(loan)/Double(anualIncome) <= 0.5
         }
         
         return false

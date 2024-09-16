@@ -57,6 +57,9 @@ struct FinancialInformationView: View {
             .onAppear {
                 self.vm.getSavedDataForThisScreen(irdNumber: self._irdNumber, desiredLoanAmount: self._desiredLoanAmount, anualIncome: self._anualIncome)
             }
+            .onDisappear {
+                self.vm.saveCurrentData(irdNumber: self.irdNumber, desiredLoanAmount: self.desiredLoanAmount, anualIncome: self.anualIncome)
+            }
     }
     
 }

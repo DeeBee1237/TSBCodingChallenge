@@ -45,6 +45,7 @@ class PersonalInformationViewModel {
     
     func saveCurrentData(name: String, email: String, phone: String, gender: String, address: String) {
      
+        // TODO: move all these to the data storage manager
         var loanApplicationRecord = LoanApplicationRecord(fullName: name, emailAddress: email, phoneNumber: phone, address: address, gender: gender, anualIncome: nil, desiredLoanAmount: nil, irdNumber: nil)
         
         if let data = UserDefaults.standard.object(forKey: DataStorageManager.currentApplicationKey) as? Data,

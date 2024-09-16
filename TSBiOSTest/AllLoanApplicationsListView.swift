@@ -52,6 +52,8 @@ struct AllLoanApplicationsListView: View {
                     
                 }
                 
+                Spacer()
+                
                 Button {
                     let removed = self.vm.removeLoanApplicationAtIndex(index: index)
                     if removed == false {
@@ -62,6 +64,8 @@ struct AllLoanApplicationsListView: View {
                 } label: {
                     Image(systemName: "xmark.circle")
                 }
+                .clipped()
+                .buttonStyle(.borderless)
                 .frame(width: 10, height: 10)
                 
             }

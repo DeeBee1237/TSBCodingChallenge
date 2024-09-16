@@ -10,13 +10,7 @@ import Foundation
 class ReviewAndSubmitModel {
     
     func getSavedDataForThisScreen() -> LoanApplicationRecord? {
-        
-        if let data = UserDefaults.standard.object(forKey: DataStorageManager.currentApplicationKey) as? Data,
-           let currentApplication = try? JSONDecoder().decode(LoanApplicationRecord.self, from: data) {
-            return currentApplication
-        }
-        
-        return nil
+        return DataStorageManager.getCurrentlySavedApplication() ?? nil
     }
     
     func getName() -> String {

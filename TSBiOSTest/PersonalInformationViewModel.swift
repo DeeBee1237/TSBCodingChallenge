@@ -48,33 +48,29 @@ class PersonalInformationViewModel {
         // TODO: move all these to the data storage manager
         var loanApplicationRecord = LoanApplicationRecord(fullName: name, emailAddress: email, phoneNumber: phone, address: address, gender: gender, anualIncome: nil, desiredLoanAmount: nil, irdNumber: nil)
         
-        if let data = UserDefaults.standard.object(forKey: DataStorageManager.currentApplicationKey) as? Data,
-           let currentApplication = try? JSONDecoder().decode(LoanApplicationRecord.self, from: data) {
-            
+        if let currentApplication = DataStorageManager.getCurrentlySavedApplication() {
             loanApplicationRecord.irdNumber = currentApplication.irdNumber ?? ""
             loanApplicationRecord.desiredLoanAmount = currentApplication.desiredLoanAmount ?? ""
             loanApplicationRecord.anualIncome = currentApplication.anualIncome ?? ""
+        } else {
+            print("Error saving data in the Personal Information View Model, current record not found")
         }
         
-        if let contentData = try? JSONEncoder().encode(loanApplicationRecord) {
-            UserDefaults.standard.set(contentData, forKey: DataStorageManager.currentApplicationKey)
-        } else {
+        let saveSuccessfully = DataStorageManager.saveLoanApplicationInCurrentState(loanApplicationRecord: loanApplicationRecord)
+        if saveSuccessfully == false {
             print("Error saving data in the Personal Information View Model")
         }
-        
+
     }
     
     func getSavedDataForThisScreen(username: State<String>, emailAddress: State<String>, phoneNumber: State<String>, gender: State<String>, address: State<String>) {
         
-        if let data = UserDefaults.standard.object(forKey: DataStorageManager.currentApplicationKey) as? Data,
-           let currentApplication = try? JSONDecoder().decode(LoanApplicationRecord.self, from: data) {
-            
+        if let currentApplication = DataStorageManager.getCurrentlySavedApplication() {
             username.wrappedValue = currentApplication.fullName ?? ""
             emailAddress.wrappedValue = currentApplication.emailAddress ?? ""
             phoneNumber.wrappedValue = currentApplication.phoneNumber ?? ""
             gender.wrappedValue = currentApplication.gender ?? ""
             address.wrappedValue = currentApplication.address ?? ""
-
         } else { // TODO: this is not right ... need to revist this logic (part of reset form logic)
             username.wrappedValue = ""
             emailAddress.wrappedValue = ""
@@ -83,8 +79,6 @@ class PersonalInformationViewModel {
             address.wrappedValue = ""
         }
         
-        
-
     }
     
 }

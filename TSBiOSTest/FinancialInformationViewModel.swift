@@ -56,36 +56,33 @@ class FinancialInformationViewModel {
     
     
     func saveCurrentData(irdNumber: String, desiredLoanAmount: String, anualIncome: String) {
-     
-        if let data = UserDefaults.standard.object(forKey: DataStorageManager.currentApplicationKey) as? Data,
-           var currentApplication = try? JSONDecoder().decode(LoanApplicationRecord.self, from: data) {
+        
+        if var currentApplication = DataStorageManager.getCurrentlySavedApplication() {
             
             currentApplication.irdNumber = irdNumber
             currentApplication.desiredLoanAmount = desiredLoanAmount
             currentApplication.anualIncome = anualIncome
-
-            if let contentData = try? JSONEncoder().encode(currentApplication) {
-                
-                UserDefaults.standard.removeObject(forKey: DataStorageManager.currentApplicationKey)
             
-                UserDefaults.standard.set(contentData, forKey: DataStorageManager.currentApplicationKey)
-            } else {
-                print("Error saving data in the Personal Information View Model")
-            }
-        }
-        
+            let saveSuccessfully = DataStorageManager.saveLoanApplicationInCurrentState(loanApplicationRecord: currentApplication)
+            if saveSuccessfully == false { print("Error saving data in the Information View Mode") }
+            
+            
+        } else { print("Error saving data in the Financial Information View Model, current record not found") }
+       
     }
     
     func getSavedDataForThisScreen(irdNumber: State<String>, desiredLoanAmount: State<String>, anualIncome: State<String>) {
         
-        if let data = UserDefaults.standard.object(forKey: DataStorageManager.currentApplicationKey) as? Data,
-           let currentApplication = try? JSONDecoder().decode(LoanApplicationRecord.self, from: data) {
+        if let currentApplication = DataStorageManager.getCurrentlySavedApplication() {
             
             irdNumber.wrappedValue = currentApplication.irdNumber ?? ""
             desiredLoanAmount.wrappedValue = currentApplication.desiredLoanAmount ?? ""
             anualIncome.wrappedValue = currentApplication.anualIncome ?? ""
+            
+        } else {
+            print("Error in the Financial Information View Model, obtaining currently saved info failed")
         }
-
+        
     }
     
 }

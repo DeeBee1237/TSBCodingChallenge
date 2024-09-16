@@ -74,6 +74,16 @@ class DataStorageManager {
         
     }
     
+    static func saveLoanApplicationInCurrentState(loanApplicationRecord: LoanApplicationRecord) -> Bool {
+        
+        if let contentData = try? JSONEncoder().encode(loanApplicationRecord) {
+            UserDefaults.standard.set(contentData, forKey: DataStorageManager.currentApplicationKey)
+            return true
+        }
+        
+        return false
+    }
+    
     
     static func removeLoanApplicationAtIndex(index: Int) -> Bool {
      

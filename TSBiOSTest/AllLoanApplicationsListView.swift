@@ -9,10 +9,8 @@ import SwiftUI
 
 struct AllLoanApplicationsListView: View {
     
-    // https://stackoverflow.com/questions/61930915/swiftui-detecting-the-navigationview-back-button-press
-    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-
     var vm: AllLoanApplicationsListViewModel = AllLoanApplicationsListViewModel()
+    @Binding var path: [String]
     
     var body: some View {
         
@@ -26,7 +24,7 @@ struct AllLoanApplicationsListView: View {
         
         Button(action : {
             self.vm.removeCurrentlySavedApplication()
-            self.mode.wrappedValue.dismiss()
+            path.removeAll()
         }){
             Text("New Application")
         }
@@ -55,5 +53,5 @@ struct AllLoanApplicationsListView: View {
 }
 
 #Preview {
-    AllLoanApplicationsListView()
+    AllLoanApplicationsListView(path: .constant([]))
 }

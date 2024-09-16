@@ -10,14 +10,12 @@ import SwiftUI
 struct ReviewAndSubmitView: View {
     
     let vm: ReviewAndSubmitModel = ReviewAndSubmitModel()
-    @State private var theDataIsValid: Bool = false
 
     @State private var showSuccess = false
-    
+    @Binding var path: [String]
     
     var body: some View {
         
-        NavigationStack {
             
             VStack {
                 Text("Please review the information you have entered and submit or else go back to edit previous fields")
@@ -71,22 +69,18 @@ struct ReviewAndSubmitView: View {
                 
             }
             .navigationTitle("Review And Submit")
-            .navigationDestination(isPresented: $theDataIsValid) {
-                AllLoanApplicationsListView()
-            }
-            
-        }
+        
         .padding()
     }
     
     private func delayTransition() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            theDataIsValid = true
+            path.append("AllLoanApplicationsListView")
         }
     }
     
 }
 
 #Preview {
-    ReviewAndSubmitView()
+    ReviewAndSubmitView(path: .constant([]))
 }

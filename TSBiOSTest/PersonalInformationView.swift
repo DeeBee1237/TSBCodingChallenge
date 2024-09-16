@@ -15,15 +15,15 @@ struct PersonalInformationView: View {
     @State private var selectedGender: Gender = .Male
     @State private var gender: String = "Male"
     @State private var address: String = ""
-    
     @State private var errorText: String?
-    @State private var dataIsValid: Bool = false
     
     var vm : PersonalInformationViewModel = PersonalInformationViewModel()
     
+    @State private var path: [String] = []
+    
     var body: some View {
         
-        NavigationStack {
+        NavigationStack(path: $path) {
             
             VStack {
                    
@@ -59,13 +59,15 @@ struct PersonalInformationView: View {
                     Spacer()
         
                     Button {
+                        
                         self.errorText = self.vm.validateFields(name: self.username, email: self.emailAddress, phone: self.phoneNumber, gender: self.gender)
                         
                         if self.errorText == nil {
+                            
                             self.vm.saveCurrentData(name: self.username, email: self.emailAddress, phone: self.phoneNumber, gender: self.gender, address: self.address)
+                            self.path.append("FinancialInformationView")
+                            
                         }
-                        
-                        dataIsValid = self.errorText == nil
                         
                     } label: {
                         Text("Next")
@@ -82,8 +84,15 @@ struct PersonalInformationView: View {
             }
             .padding()
             .navigationTitle("Personal Information")
-            .navigationDestination(isPresented: $dataIsValid) {
-                FinancialInformationView()
+            .navigationDestination(for: String.self) { pathValue in
+                if pathValue == "FinancialInformationView" {
+                    FinancialInformationView(path: $path)
+                } else if pathValue == "ReviewAndSubmitView" {
+                    ReviewAndSubmitView(path: $path)
+                }
+                else if pathValue == "AllLoanApplicationsListView" {
+                    AllLoanApplicationsListView(path: $path)
+                }
             }
         }
     }

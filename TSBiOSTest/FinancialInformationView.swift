@@ -12,16 +12,14 @@ struct FinancialInformationView: View {
     @State private var anualIncome: String = ""
     @State private var desiredLoanAmount: String = ""
     @State private var irdNumber: String = ""
-    
-    @State private var dataIsValid: Bool = false
-    
+        
     @State private var errorText: String?
     var vm: FinancialInformationViewModel = FinancialInformationViewModel()
 
+    @Binding var path: [String]
+    
     var body: some View {
-        
-        NavigationStack {
-            
+                    
             VStack {
                 
                 TextFieldView(title: "Anual Income", inputBinding: $anualIncome)
@@ -44,9 +42,8 @@ struct FinancialInformationView: View {
                         
                         if self.errorText == nil {
                             self.vm.saveCurrentData(irdNumber: self.irdNumber, desiredLoanAmount: self.desiredLoanAmount, anualIncome: self.anualIncome)
+                            path.append("ReviewAndSubmitView")
                         }
-                        
-                        dataIsValid = self.errorText == nil
                         
                     } label: {
                         Text("Next")
@@ -57,19 +54,13 @@ struct FinancialInformationView: View {
             }
             .padding()
             .navigationTitle("Financial Information")
-            .navigationDestination(isPresented: $dataIsValid) {
-                ReviewAndSubmitView()
-            }
             .onAppear {
                 self.vm.getSavedDataForThisScreen(irdNumber: self._irdNumber, desiredLoanAmount: self._desiredLoanAmount, anualIncome: self._anualIncome)
             }
-        }
-        
-        
     }
     
 }
 
 #Preview {
-    FinancialInformationView()
+    FinancialInformationView(path:.constant([]))
 }

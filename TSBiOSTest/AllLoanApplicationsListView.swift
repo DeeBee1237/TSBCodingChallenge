@@ -22,13 +22,7 @@ struct AllLoanApplicationsListView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: Button(action : {
-            self.vm.removeCurrentlySavedApplication()
-            self.mode.wrappedValue.dismiss()
-        }){
-            Text("New Application")
-        })
-        
+        .navigationTitle("All Applications")
         
         Button(action : {
             self.vm.removeCurrentlySavedApplication()
@@ -44,7 +38,7 @@ struct AllLoanApplicationsListView: View {
         
         if let fullName = loanApplication.fullName, let desiredAmount = loanApplication.desiredLoanAmount {
             
-            VStack {
+            VStack(alignment: .leading) {
                 
                 Text("Name : \(fullName)")
                 Text("Desired Loan Amount : \(desiredAmount)")

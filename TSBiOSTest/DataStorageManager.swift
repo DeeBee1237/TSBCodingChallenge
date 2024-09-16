@@ -41,6 +41,22 @@ class DataStorageManager {
         return [] // return empty list if none are found
     }
     
+    static func saveNewApplicationListState(applications: [LoanApplicationRecord]) -> Bool {
+        
+        do {
+
+            let encodedData = try JSONEncoder().encode(applications)
+            UserDefaults.standard.set(encodedData, forKey: allApplicationsKey)
+            return true
+            
+        } catch {
+            // Maybe do a Firebase console log instead ;)
+            print("ERROR saving data in saveNewApplicationListState")
+            return false
+        }
+        
+    }
+    
     
     static func saveNewLoanApplicationToList() -> Bool {
      
@@ -54,17 +70,17 @@ class DataStorageManager {
         var applications: [LoanApplicationRecord] = getCurrentlySavedApplications()
         applications.append(savedApplication)
         
-        do {
-
-            let encodedData = try JSONEncoder().encode(applications)
-            UserDefaults.standard.set(encodedData, forKey: allApplicationsKey)
-            return true
-            
-        } catch {
-            // Maybe do a Firebase console log instead ;)
-            print("ERROR saving data in saveNewLoanApplicationToList")
-            return false
-        }
+        return saveNewApplicationListState(applications: applications)
+        
+    }
+    
+    
+    static func removeLoanApplicationAtIndex(index: Int) -> Bool {
+     
+        var applications: [LoanApplicationRecord] = getCurrentlySavedApplications()
+        applications.remove(at: index)
+        
+        return saveNewApplicationListState(applications: applications)
         
     }
 }

@@ -13,6 +13,7 @@ struct ReviewAndSubmitView: View {
 
     @State private var showSuccess = false
     @Binding var path: [String]
+    @State private var showLoadingIndicator = false
     
     var body: some View {
         
@@ -22,6 +23,10 @@ struct ReviewAndSubmitView: View {
                     .fontWeight(.bold)
                     .padding(.bottom, 20)
                 
+                if showLoadingIndicator {
+                    loadingIndicatorView()
+                }
+               
                 VStack(alignment: .leading, spacing: 20) {
                     
                     VStack(alignment: .leading) {
@@ -77,7 +82,7 @@ struct ReviewAndSubmitView: View {
                                     
                     Button {
                         
-                        showSuccess = self.vm.submitData()
+                        self.showLoadingIndicator = true
                         delayTransition()
                         
                     } label: {
@@ -93,9 +98,33 @@ struct ReviewAndSubmitView: View {
         .padding()
     }
     
+    @ViewBuilder func loadingIndicatorView() -> some View {
+        HStack(alignment: .center) {
+            
+            Spacer()
+            
+            ProgressView()
+                .progressViewStyle(.circular)
+            
+            Spacer()
+        }
+    }
+    
     private func delayTransition() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            path.append("AllLoanApplicationsListView")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            
+            self.showLoadingIndicator = false
+            showSuccess = self.vm.submitData()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                                
+                if showSuccess {
+                    path.append("AllLoanApplicationsListView")
+                } else {
+                    // TODO: show error/try again here ... for this it shouldn't happen ...
+                }
+                
+            }
         }
     }
     

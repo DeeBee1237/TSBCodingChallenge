@@ -17,31 +17,51 @@ struct ReviewAndSubmitView: View {
     var body: some View {
         
             
-            VStack {
+            VStack(alignment: .leading) {
                 Text("Please review the information you have entered and submit or else go back to edit previous fields")
                     .fontWeight(.bold)
                     .padding(.bottom, 20)
                 
-                VStack(spacing: 20) {
+                VStack(alignment: .leading, spacing: 20) {
                     
-                    Text("Full Name : \(self.vm.getName())")
-                    
-                    Text("Email : \(self.vm.getEmail())")
-                    
-                    Text("Phone Number : \(self.vm.getPhoneNumber())")
-                    
-                    if let address = vm.getAddress() {
-                        Text("Address : \(address)")
+                    VStack(alignment: .leading) {
+                        
+                        Text("Full Name : \(self.vm.getName())")
+                        
+                        Text("Email : \(self.vm.getEmail())")
+                        
+                        Text("Phone Number : \(self.vm.getPhoneNumber())")
+                        
+                        if let address = vm.getAddress() {
+                            Text("Address : \(address)")
+                        }
+                        
+                        Text("Gender : \(self.vm.getGender())")
+                        
+                        
+                        Button {
+                            path.removeAll()
+                        } label: {
+                            Text("Edit Personal Information Section ")
+                        }
+                        
                     }
                     
-                    Text("Gender : \(self.vm.getGender())")
-                    
-                    Text("Annual Income : \(self.vm.getAnnualIncome())")
-                    
-                    Text("Desired Loan Amount : \(self.vm.getDesiredLoanAmount())")
-                    
-                    Text("IRD Number : \(self.vm.getIRDNumber())")
-                    
+                    VStack(alignment: .leading) {
+                        
+                        Text("Annual Income : \(self.vm.getAnnualIncome())")
+                        
+                        Text("Desired Loan Amount : \(self.vm.getDesiredLoanAmount())")
+                        
+                        Text("IRD Number : \(self.vm.getIRDNumber())")
+                        
+                        Button {
+                            path.removeLast()
+                        } label: {
+                            Text("Edit Financial Information Section ")
+                        }
+                        
+                    }
                     
                     if showSuccess {
                         Text("Your Application Was Successfully Submitted!")

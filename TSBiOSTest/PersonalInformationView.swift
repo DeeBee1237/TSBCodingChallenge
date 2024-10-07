@@ -21,6 +21,8 @@ struct PersonalInformationView: View {
     
     @State private var path: [String] = []
     
+    @State private var pickerIsShowing: Bool = false
+    
     var body: some View {
         
         NavigationStack(path: $path) {
@@ -36,14 +38,19 @@ struct PersonalInformationView: View {
                 VStack {
                     
                     TextFieldView(title: "Gender", inputBinding: $gender)
+                        .onTapGesture {
+                            pickerIsShowing = true
+                        }
                     
-                    Picker(selectedGender.rawValue, selection: $selectedGender) {
-                        Text("Male").tag(Gender.Male)
-                        Text("Female").tag(Gender.Female)
-                    }
-                    .pickerStyle(.segmented)
-                    .onChange(of: selectedGender) { _, gender in
-                        self.gender = gender.rawValue
+                    if pickerIsShowing {
+                        Picker(selectedGender.rawValue, selection: $selectedGender) {
+                            Text("Male").tag(Gender.Male)
+                            Text("Female").tag(Gender.Female)
+                        }
+                        .pickerStyle(.segmented)
+                        .onChange(of: selectedGender) { _, gender in
+                            self.gender = gender.rawValue
+                        }
                     }
                 }.padding(.top, 25)
                 
